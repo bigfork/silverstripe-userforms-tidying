@@ -1,0 +1,21 @@
+{
+    "name": "bigfork/silverstripe-userforms-tidying",
+    "description": "Opinionated improvements to the Silverstripe Userforms module",
+    "type": "silverstripe-vendormodule",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Bigfork",
+            "homepage": "https://www.bigfork.co.uk"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4",
+        "silverstripe/userforms": "^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bigfork\\SilverstripeUserFormsTidying\\": "src/"
+        }
+    }
+}

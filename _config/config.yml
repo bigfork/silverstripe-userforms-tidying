@@ -1,0 +1,7 @@
+---
+Name: userforms-tidying
+After: '#userformsconfig'
+---
+SilverStripe\UserForms\Model\EditableFormField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\EditableFormFieldExtension
