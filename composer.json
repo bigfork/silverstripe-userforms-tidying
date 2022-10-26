@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "dnadesign/silverstripe-elemental-userforms": "^3",
         "silverstripe/framework": "^4",
         "silverstripe/userforms": "^5"
     },
@@ -17,5 +18,10 @@
         "psr-4": {
             "Bigfork\\SilverstripeUserFormsTidying\\": "src/"
         }
+    },
+    "extra": {
+        "expose": [
+            "client/dist"
+        ]
     }
 }
