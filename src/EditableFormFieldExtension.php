@@ -6,6 +6,7 @@ use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 
@@ -62,5 +63,10 @@ class EditableFormFieldExtension extends Extension
                 $advancedFields->getChildren()->push($field);
             }
         }
+    }
+
+    public function beforeUpdateFormField(FormField $field)
+    {
+        $field->setDescription($this->owner->Description);
     }
 }
