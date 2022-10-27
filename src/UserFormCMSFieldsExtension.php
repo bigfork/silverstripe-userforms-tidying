@@ -101,14 +101,18 @@ class UserFormCMSFieldsExtension extends Extension
             (GridFieldAddNewFormFieldInlineButton::create())
                 ->setTitle('Add form field')
         );
-        $fieldsGridField->getConfig()->addComponent(
-            (GridFieldAddNewPageBreakInlineButton::create())
-                ->setTitle('Add page break')
-        );
-        $fieldsGridField->getConfig()->addComponent(
-            (GridFieldAddNewFieldGroupInlineButton::create())
-                ->setTitle('Add field group')
-        );
+        if (!$this->owner->config()->get('disable_multi_step_forms')) {
+            $fieldsGridField->getConfig()->addComponent(
+                (GridFieldAddNewPageBreakInlineButton::create())
+                    ->setTitle('Add page break')
+            );
+        }
+        if (!$this->owner->config()->get('disable_form_field_groups')) {
+            $fieldsGridField->getConfig()->addComponent(
+                (GridFieldAddNewFieldGroupInlineButton::create())
+                    ->setTitle('Add field group')
+            );
+        }
     }
 
     protected function tidyConfigurationFields(FieldList $fields): void

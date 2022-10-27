@@ -6,18 +6,19 @@ SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'bigfork/silverstripe-userforms-tidying:client/dist/styles/bundle.css'
 DNADesign\ElementalUserForms\Model\ElementForm:
-  block_default_userforms_css: true
-  block_default_userforms_js: true
   extensions:
     - Bigfork\SilverstripeUserFormsTidying\UserFormCMSFieldsExtension
     - Bigfork\SilverstripeUserFormsTidying\ElementFormExtension
 SilverStripe\UserForms\Model\EditableFormField:
   extensions:
     - Bigfork\SilverstripeUserFormsTidying\EditableFormFieldExtension
+SilverStripe\UserForms\Model\EditableFormField\EditableCountryDropdownField:
+  hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableFileField:
+  hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableMemberListField:
+  hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableNumericField:
+  hidden: true
 SilverStripe\UserForms\Model\UserDefinedForm:
-  block_default_userforms_css: true
-  block_default_userforms_js: true
-  extensions:
-    - Bigfork\SilverstripeUserFormsTidying\UserDefinedFormExtension
-    - Bigfork\SilverstripeUserFormsTidying\UserFormCMSFieldsExtension
   upgrade_on_build: false
