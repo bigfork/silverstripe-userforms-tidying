@@ -101,16 +101,13 @@ class UserFormCMSFieldsExtension extends Extension
             (GridFieldAddNewFormFieldInlineButton::create())
                 ->setTitle('Add form field')
         );
-
         $fieldsGridField->getConfig()->addComponent(
-            (new GridFieldAddClassesButton([EditableFormStep::class]))
-                ->setButtonName('Add page break')
-                ->setButtonClass('btn-secondary')
+            (GridFieldAddNewPageBreakInlineButton::create())
+                ->setTitle('Add page break')
         );
         $fieldsGridField->getConfig()->addComponent(
-            (new GridFieldAddClassesButton([EditableFieldGroup::class, EditableFieldGroupEnd::class]))
-                ->setButtonName('Add field group')
-                ->setButtonClass('btn-secondary')
+            (GridFieldAddNewFieldGroupInlineButton::create())
+                ->setTitle('Add field group')
         );
     }
 
