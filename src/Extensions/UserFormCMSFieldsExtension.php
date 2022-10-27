@@ -1,7 +1,11 @@
 <?php
 
-namespace Bigfork\SilverstripeUserFormsTidying;
+namespace Bigfork\SilverstripeUserFormsTidying\Extensions;
 
+use Bigfork\SilverstripeUserFormsTidying\Forms\CheckboxFieldWithExtraPadding;
+use Bigfork\SilverstripeUserFormsTidying\Forms\GridFieldAddNewFieldGroupInlineButton;
+use Bigfork\SilverstripeUserFormsTidying\Forms\GridFieldAddNewFormFieldInlineButton;
+use Bigfork\SilverstripeUserFormsTidying\Forms\GridFieldAddNewPageBreakInlineButton;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;

@@ -12,7 +12,8 @@
     "require": {
         "dnadesign/silverstripe-elemental-userforms": "^3",
         "silverstripe/framework": "^4",
-        "silverstripe/userforms": "^5"
+        "silverstripe/userforms": "^5",
+        "unclecheese/display-logic": "^2"
     },
     "autoload": {
         "psr-4": {

@@ -7,18 +7,41 @@ SilverStripe\Admin\LeftAndMain:
     - 'bigfork/silverstripe-userforms-tidying:client/dist/styles/bundle.css'
 DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
-    - Bigfork\SilverstripeUserFormsTidying\UserFormCMSFieldsExtension
-    - Bigfork\SilverstripeUserFormsTidying\ElementFormExtension
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormCMSFieldsExtension
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\ElementFormExtension
+SilverStripe\UserForms\Form\UserForm:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormExtension
 SilverStripe\UserForms\Model\EditableFormField:
   extensions:
-    - Bigfork\SilverstripeUserFormsTidying\EditableFormFieldExtension
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableFormFieldExtension
+SilverStripe\UserForms\Model\EditableFormField\EditableCheckbox:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCheckboxExtension
 SilverStripe\UserForms\Model\EditableFormField\EditableCountryDropdownField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCountryDropdownFieldExtension
   hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableDateField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableDateFieldExtension
 SilverStripe\UserForms\Model\EditableFormField\EditableFileField:
   hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableFormHeading:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableFormHeadingExtension
+SilverStripe\UserForms\Model\EditableFormField\EditableLiteralField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableLiteralFieldExtension
 SilverStripe\UserForms\Model\EditableFormField\EditableMemberListField:
   hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableMultipleOptionField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableMultipleOptionFieldExtension
 SilverStripe\UserForms\Model\EditableFormField\EditableNumericField:
   hidden: true
+SilverStripe\UserForms\Model\EditableFormField\EditableTextField:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\EditableTextFieldExtension
 SilverStripe\UserForms\Model\UserDefinedForm:
   upgrade_on_build: false

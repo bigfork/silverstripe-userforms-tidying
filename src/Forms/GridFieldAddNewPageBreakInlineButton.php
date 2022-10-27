@@ -1,9 +1,8 @@
 <?php
 
-namespace Bigfork\SilverstripeUserFormsTidying;
+namespace Bigfork\SilverstripeUserFormsTidying\Forms;
 
 use Exception;
-use LogicException;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\Form;
@@ -14,8 +13,7 @@ use SilverStripe\ORM\DataObjectInterface;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ManyManyThroughList;
-use SilverStripe\UserForms\Model\EditableFormField;
-use SilverStripe\UserForms\Model\EditableFormField\EditableTextField;
+use SilverStripe\UserForms\Model\EditableFormField\EditableFormStep;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
@@ -26,12 +24,14 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 /**
  * Much of this class is copied from GridFieldAddNewInlineButton. It accomplishes two things:
  *
- * 1. When a record is added "inline", the class name dropdown defaults to EditableTextField
+ * 1. When a record is added "inline", the class name is set to EditableFormStep
  * 2. Fixes an issue in handleSave() where the default add new inline button tries to save the
- *    record as an EditableFormField instead of the chosen class from the dropdown
+ *    record as an EditableFormField instead of EditableFormStep
  */
-class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
+class GridFieldAddNewPageBreakInlineButton extends GridFieldAddNewInlineButton
 {
+    const POST_KEY = 'GridFieldAddNewPageBreakInlineButton';
+
     public function getHTMLFragments($grid)
     {
         if ($grid->getList() && !singleton($grid->getModelClass())->canCreate()) {
@@ -64,17 +64,11 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
         $columns = ArrayList::create();
         $handled = array_keys($editable->getDisplayFields($grid) ?? []);
 
-        if ($grid->getList()) {
-            $record = Injector::inst()->create($grid->getModelClass());
-        } else {
-            $record = null;
-        }
-
+        $record = Injector::inst()->create(EditableFormStep::class);
         $fields = $editable->getFields($grid, $record);
 
         foreach ($grid->getColumns() as $column) {
-            if (in_array($column, $handled ?? [])) {
-                $field = $fields->dataFieldByName($column);
+            if (in_array($column, $handled ?? []) && $field = $fields->dataFieldByName($column)) {
                 $field->setName(sprintf(
                     '%s[%s][{%%=o.num%%}][%s]',
                     $grid->getName(),
@@ -84,12 +78,6 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
 
                 if ($record && $record->hasField($column)) {
                     $value = $record->getField($column);
-
-                    // Ensures the class name dropdown defaults to text field
-                    if ($value === EditableFormField::class && $column === 'ClassName') {
-                        $value = EditableTextField::class;
-                    }
-
                     $field->setValue($value);
                 }
                 $content = $field->Field();
@@ -122,7 +110,7 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
             )));
         }
 
-        return $columns->renderWith('Symbiote\\GridFieldExtensions\\GridFieldAddNewInlineRow');
+        return $columns->renderWith('Bigfork\\SilverstripeUserFormsTidying\\Forms\\GridFieldAddNewPageBreakInlineRow');
     }
 
     public function handleSave(GridField $grid, DataObjectInterface $record)
@@ -134,24 +122,18 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
             return;
         }
 
-        $class = $grid->getModelClass();
         /** @var GridFieldEditableColumns $editable */
         $editable = $grid->getConfig()->getComponentByType(GridFieldEditableColumns::class);
         /** @var GridFieldOrderableRows $sortable */
         $sortable = $grid->getConfig()->getComponentByType(GridFieldOrderableRows::class);
 
-        if (!singleton($class)->canCreate()) {
+        if (!singleton(EditableFormStep::class)->canCreate()) {
             return;
         }
 
         foreach ($value[self::POST_KEY] as $fields) {
-            $className = $fields['ClassName'] ?? $class;
-            if (!class_exists($className) || ($className !== $class && !is_subclass_of($className, $class))) {
-                throw new LogicException('Passed an invalid class name');
-            }
-
             /** @var DataObject $item */
-            $item  = $className::create();
+            $item  = EditableFormStep::create();
 
             // Add the item before the form is loaded so that the join-object is available
             if ($list instanceof ManyManyThroughList) {

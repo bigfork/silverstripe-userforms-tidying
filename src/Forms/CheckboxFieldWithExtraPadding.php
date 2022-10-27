@@ -1,6 +1,6 @@
 <?php
 
-namespace Bigfork\SilverstripeUserFormsTidying;
+namespace Bigfork\SilverstripeUserFormsTidying\Forms;
 
 use SilverStripe\Forms\CheckboxField;
 

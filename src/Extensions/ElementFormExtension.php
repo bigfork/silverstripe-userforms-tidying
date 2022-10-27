@@ -1,6 +1,6 @@
 <?php
 
-namespace Bigfork\SilverstripeUserFormsTidying;
+namespace Bigfork\SilverstripeUserFormsTidying\Extensions;
 
 use DNADesign\Elemental\Forms\TextCheckboxGroupField;
 use SilverStripe\Core\Extension;
