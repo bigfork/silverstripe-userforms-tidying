@@ -68,5 +68,5 @@ SilverStripe\UserForms\Model\EditableFormField\EditableNumericField:
 
 ## Screenshots
 
-<img src="docs/images/field-editor.png" width="1262" height="945" />
-<img src="docs/images/field-detail.png" width="1261" height="947" />
+![](docs/images/field-editor.png)
+![](docs/images/field-detail.png)
