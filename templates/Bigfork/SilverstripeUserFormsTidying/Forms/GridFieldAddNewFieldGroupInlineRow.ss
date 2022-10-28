@@ -1,4 +1,4 @@
-<script type="text/x-tmpl" class="ss-gridfield-add-inline-template">
+<script type="text/x-tmpl" class="ss-gridfield-add-inline-template" data-name="field-group">
 	<% loop $Me %>
         <tr class="ss-gridfield-item ss-gridfield-inline-new" data-class="SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup<% if $Pos > 1%>End<% end_if %>">
             <% loop $Columns %>

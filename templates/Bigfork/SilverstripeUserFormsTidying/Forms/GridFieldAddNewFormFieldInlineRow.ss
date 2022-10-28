@@ -1,5 +1,5 @@
-<script type="text/x-tmpl" class="ss-gridfield-add-inline-template" data-name="page-break">
-	<tr class="ss-gridfield-item ss-gridfield-inline-new" data-class="SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep">
+<script type="text/x-tmpl" class="ss-gridfield-add-inline-template" data-name="form-field">
+	<tr class="ss-gridfield-item ss-gridfield-inline-new">
 		<% loop $Me %>
             <% if $IsActions %>
 				<td$Attributes>

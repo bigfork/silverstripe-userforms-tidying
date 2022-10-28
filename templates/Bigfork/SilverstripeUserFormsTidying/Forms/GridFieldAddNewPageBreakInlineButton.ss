@@ -1,3 +1,3 @@
-<button type="button" href="$Link" class="ss-gridfield-add-new-inline btn btn-secondary font-icon-plus-circled">
+<button type="button" class="ss-gridfield-add-new-page-break-inline btn btn-secondary font-icon-plus-circled">
     $Title
 </button>

@@ -5,6 +5,8 @@ After: '#userformsconfig'
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'bigfork/silverstripe-userforms-tidying:client/dist/styles/bundle.css'
+  extra_requirements_javascript:
+    - 'bigfork/silverstripe-userforms-tidying:client/dist/js/bundle.js'
 DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
     - Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormCMSFieldsExtension

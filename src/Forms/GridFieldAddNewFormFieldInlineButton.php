@@ -122,7 +122,7 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
             )));
         }
 
-        return $columns->renderWith('Symbiote\\GridFieldExtensions\\GridFieldAddNewInlineRow');
+        return $columns->renderWith('Bigfork\\SilverstripeUserFormsTidying\\Forms\\GridFieldAddNewFormFieldInlineRow');
     }
 
     public function handleSave(GridField $grid, DataObjectInterface $record)
