@@ -41,7 +41,7 @@ class EditableMultipleOptionFieldExtension extends Extension
 
         /** @var GridFieldAddNewInlineButton $addNewButton */
         $addNewButton = $optionsGridField->getConfig()->getComponentByType(GridFieldAddNewInlineButton::class);
-        $addNewButton->setTitle('Add new option');
+        $addNewButton->setTitle(_t(__CLASS__.'.ADD_OPTION', 'Add new option'));
 
         /** @var GridFieldEditableColumns $editableColumns */
         $editableColumns = $optionsGridField->getConfig()->getComponentByType(GridFieldEditableColumns::class);
@@ -70,10 +70,10 @@ class EditableMultipleOptionFieldExtension extends Extension
                 [
                     FieldGroup::create(
                         'Empty value',
-                        CheckboxField::create('UseEmptyString', 'Display custom text when no value has been selected')
-                    ),
-                    $emptyString = TextField::create('EmptyString', 'Empty value text')
-                        ->setDescription('Shown when no value has been selected')
+                        CheckboxField::create('UseEmptyString', _t(__CLASS__.'.EMPTYSTRING_CHECKBOX_DESCRIPTION', 'Display custom text when no value has been selected'))
+                    )->setTitle(_t(__CLASS__.'.EMPTYSTRING_CHECKBOX_LABEL', 'Empty value')),
+                    $emptyString = TextField::create('EmptyString', _t(__CLASS__.'.EMPTYSTRING_LABEL', 'Empty value text'))
+                        ->setDescription(_t(__CLASS__.'.EMPTYSTRING_DESCRIPTION', 'Shown when no value has been selected'))
                 ],
                 'Advanced'
             );

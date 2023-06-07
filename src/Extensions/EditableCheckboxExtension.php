@@ -6,6 +6,7 @@ use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\UserForms\Model;
 
 class EditableCheckboxExtension extends Extension
 {
@@ -15,8 +16,8 @@ class EditableCheckboxExtension extends Extension
             'CheckedDefault',
             FieldGroup::create(
                 'Default value',
-                CheckboxField::create('CheckedDefault', 'This checkbox should be checked by default')
-            )
+                CheckboxField::create('CheckedDefault', _t(EditableFormField::class . '.CHECKEDBYDEFAULT', 'Checked by Default?'))
+            )->setTitle(_t(__CLASS__.'.DEFAULT_VALUE', 'Default value'))
         );
     }
 }

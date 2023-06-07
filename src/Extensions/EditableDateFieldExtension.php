@@ -15,8 +15,8 @@ class EditableDateFieldExtension extends Extension
             'DefaultToToday',
             FieldGroup::create(
                 'Default to today',
-                CheckboxField::create('DefaultToToday', 'Pre-populate the field with today’s date')
-            )
+                CheckboxField::create('DefaultToToday', _t(__CLASS__.'.PREPOPULATE', 'Pre-populate the field with today’s date'))
+            )->setTitle(_t(__CLASS__.'.DEFAULTTOTODAY', 'Default to today'))
         );
     }
 }
