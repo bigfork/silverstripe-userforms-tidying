@@ -59,7 +59,7 @@ class UserFormCMSFieldsExtension extends Extension
         $fieldClasses = singleton(EditableFormField::class)->getEditableFieldClasses();
         $editableColumns->setDisplayFields([
             'ClassName' => [
-                'title' => 'Field type',
+                'title' => _t(__CLASS__.'.FIELDOVERVIEW_FIELDTYPE', 'Field type'),
                 'callback' => function (EditableFormField $record, $column) use ($fieldClasses) {
                     $field = $record->getInlineClassnameField($column, $fieldClasses);
                     $field->setValue(EditableTextField::class);
@@ -72,15 +72,19 @@ class UserFormCMSFieldsExtension extends Extension
                 }
             ],
             'Title' => [
-                'title' => 'Title',
+                'title' => _t(__CLASS__.'.FIELDOVERVIEW_TITLE', 'Title'),
                 'callback' => function (EditableFormField $record, $column) {
                     return $record->getInlineTitleField($column);
                 }
             ],
             'Required' => [
-                'title' => 'Required',
+                'title' => _t(__CLASS__.'.FIELDOVERVIEW_REQUIRED', 'Required'),
                 'callback' => function (EditableFormField $record, $column) {
-                    if ($record instanceof EditableFormStep || $record instanceof EditableFieldGroup || $record instanceof EditableFieldGroupEnd) {
+                    if (
+                        $record instanceof EditableFormStep
+                        || $record instanceof EditableFieldGroup
+                        || $record instanceof EditableFieldGroupEnd
+                    ) {
                         return HiddenField::create($column);
                     }
 
@@ -88,9 +92,13 @@ class UserFormCMSFieldsExtension extends Extension
                 }
             ],
             'ShowInSummary' => [
-                'title' => 'Show in summary?',
+                'title' => _t(__CLASS__.'.FIELDOVERVIEW_SHOWINSUMMARY', 'Show in summary?'),
                 'callback' => function (EditableFormField $record, $column) {
-                    if ($record instanceof EditableFormStep || $record instanceof EditableFieldGroup || $record instanceof EditableFieldGroupEnd) {
+                    if (
+                        $record instanceof EditableFormStep
+                        || $record instanceof EditableFieldGroup
+                        || $record instanceof EditableFieldGroupEnd
+                    ) {
                         return HiddenField::create($column);
                     }
 
@@ -103,18 +111,18 @@ class UserFormCMSFieldsExtension extends Extension
 
         $fieldsGridField->getConfig()->addComponent(
             (GridFieldAddNewFormFieldInlineButton::create())
-                ->setTitle('Add form field')
+                ->setTitle(_t(__CLASS__.'.FIELDOVERVIEW_ADDFIELD', 'Add form field'))
         );
         if (!$this->owner->config()->get('disable_multi_step_forms')) {
             $fieldsGridField->getConfig()->addComponent(
                 (GridFieldAddNewPageBreakInlineButton::create())
-                    ->setTitle('Add page break')
+                    ->setTitle(_t(__CLASS__.'.FIELDOVERVIEW_ADDPAGEBREAK', 'Add page break'))
             );
         }
         if (!$this->owner->config()->get('disable_form_field_groups')) {
             $fieldsGridField->getConfig()->addComponent(
                 (GridFieldAddNewFieldGroupInlineButton::create())
-                    ->setTitle('Add field group')
+                    ->setTitle(_t(__CLASS__.'.FIELDOVERVIEW_ADDGROUPFIELD', 'Add field group'))
             );
         }
     }
@@ -125,23 +133,29 @@ class UserFormCMSFieldsExtension extends Extension
         $configuration = $fields->fieldByName('Root.FormOptions');
         $configuration->removeByName('OnCompleteMessageLabelOnCompleteMessage');
         $configuration->unshift(
-            HTMLEditorField::create('OnCompleteMessage', 'Show on completion')
-                ->setRows(3)
+            HTMLEditorField::create(
+                'OnCompleteMessage',
+                _t(__CLASS__.'.CONFIGURATION_SHOWONCOMPLETE', 'Show on completion')
+            )->setRows(3)
                 ->addExtraClass('stacked')
         );
 
         // Add placeholder to submit button text to show default value
         $fields->dataFieldByName('SubmitButtonText')
-            ->setTitle('Submit button text')
-            ->setAttribute('placeholder', 'Submit');
+            ->setTitle(_t(__CLASS__.'.CONFIGURATION_SUBMITLABEL', 'Submit button text'))
+            ->setAttribute('placeholder', _t(__CLASS__.'.CONFIGURATION_SUBMITPLACEHOLDER', 'Submit'));
 
         // Make "disable save to server" field more user friendly
         $fields->replaceField(
             'DisableSaveSubmissions',
-            DropdownField::create('DisableSaveSubmissions', 'Save submissions to CMS?', [
-                0 => 'Yes',
-                1 => 'No'
-            ])
+            DropdownField::create(
+                'DisableSaveSubmissions',
+                _t(__CLASS__.'.CONFIGURATION_SAVESUBMISSIONS', 'Save submissions to CMS?'),
+                [
+                    0 => _t(__CLASS__.'.CONFIGURATION_SAVESUBMISSIONS_YES', 'Yes'),
+                    1 => _t(__CLASS__.'.CONFIGURATION_SAVESUBMISSIONS_NO', 'No')
+                ]
+            )
         );
     }
 

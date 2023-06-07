@@ -24,8 +24,11 @@ class EditableFormFieldExtension extends Extension
             'ShowInSummary',
             FieldGroup::create(
                 'Summary field',
-                CheckboxField::create('ShowInSummary', 'Show this field in the “summary” column for submissions')
-            )
+                CheckboxField::create(
+                    'ShowInSummary',
+                    _t(__CLASS__.'.SHOW_IN_SUMMARY', 'Show this field in the “summary” column for submissions')
+                )
+            )->setTitle(_t(__CLASS__.'.SUMMARY_FIELD', 'Summary field'))
         );
 
         // Remove right title - description makes this redundant
@@ -35,17 +38,24 @@ class EditableFormFieldExtension extends Extension
         if (!$this->owner->config()->get('literal')) {
             $fields->insertAfter(
                 'Title',
-                TextField::create('Description', 'Description')
-                    ->setDescription('Text to help guide the user on how to fill out the field')
+                TextField::create('Description', _t(__CLASS__.'.DESCRIPTION_LABEL', 'Description'))
+                    ->setDescription(
+                        _t(
+                            __CLASS__.'.DESCRIPTION_DESCRIPTION',
+                            'Text to help guide the user on how to fill out the field'
+                        )
+                    )
             );
         }
 
         // Add hints for CMS users about existing fields
         if ($defaultValue = $fields->dataFieldByName('Default')) {
-            $defaultValue->setDescription('Value to pre-populate the field with');
+            $defaultValue->setDescription(
+                _t(__CLASS__.'.DEFAULTVALUE_DESCRIPTION', 'Value to pre-populate the field with')
+            );
         }
         if ($placeholder = $fields->dataFieldByName('Placeholder')) {
-            $placeholder->setDescription('Shows the user an example value');
+            $placeholder->setDescription(_t(__CLASS__.'.PLACEHOLDER_DESCRIPTION', 'Shows the user an example value'));
         }
 
         // Move validation settings to main tab
@@ -59,18 +69,24 @@ class EditableFormFieldExtension extends Extension
 
             $requiredField = $fields->dataFieldByName('Required');
             if ($requiredField) {
-                $requiredField->setTitle('Make this a required field');
+                $requiredField->setTitle(_t(__CLASS__.'.REQUIRED_DESCRIPTION', 'Make this a required field'));
                 $fields->replaceField(
                     'Required',
                     FieldGroup::create('Required field', $requiredField)
                         ->setName('Required')
+                        ->setTitle(_t(__CLASS__.'.REQUIRED_LABEL', 'Required field'))
                 );
             }
 
             $customErrorMessage = $fields->dataFieldByName('CustomErrorMessage');
             if ($customErrorMessage) {
-                $customErrorMessage->setTitle('Custom error message');
-                $customErrorMessage->setDescription('The error message shown when the user doesn’t complete this field');
+                $customErrorMessage->setTitle(_t(__CLASS__.'.CUSTOMERROR_LABEL', 'Custom error message'));
+                $customErrorMessage->setDescription(
+                    _t(
+                        __CLASS__.'.CUSTOMERROR_DESCRIPTION',
+                        'The error message shown when the user doesn’t complete this field'
+                    )
+                );
                 $customErrorMessage->displayIf('Required')->isChecked();
             }
         }
@@ -78,7 +94,7 @@ class EditableFormFieldExtension extends Extension
         // Move fields CMS users will rarely need to an "Advanced" toggle section
         $fields->addFieldToTab(
             'Root.Main',
-            $advancedFields = ToggleCompositeField::create('Advanced', 'Advanced', [])
+            $advancedFields = ToggleCompositeField::create('Advanced', _t(__CLASS__.'.ADVANCED', 'Advanced'), [])
         );
         $advancedFieldNames = [
             'Name',

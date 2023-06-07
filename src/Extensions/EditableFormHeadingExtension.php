@@ -15,8 +15,14 @@ class EditableFormHeadingExtension extends Extension
             'HideFromReports',
             FieldGroup::create(
                 'Hide from reports?',
-                CheckboxField::create('HideFromReports', 'Stop this field showing in stored submissions')
-            )
+                CheckboxField::create(
+                    'HideFromReports',
+                    _t(
+                        EditableLiteralFieldExtension::class.'.HIDEFROMREPORTS_DESCRIPTION',
+                        'Stop this field showing in stored submissions'
+                    )
+                )
+            )->setTitle(_t(EditableLiteralFieldExtension::class.'.HIDEFROMREPORTS_LABEL', 'Hide from reports?'))
         );
     }
 }
