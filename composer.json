@@ -3,6 +3,10 @@
     "description": "Opinionated improvements to the Silverstripe Userforms module",
     "type": "silverstripe-vendormodule",
     "license": "BSD-3-Clause",
+    "keywords": [
+        "silverstripe",
+        "userforms"
+    ],
     "authors": [
         {
             "name": "Bigfork",
@@ -10,10 +14,10 @@
         }
     ],
     "require": {
-        "dnadesign/silverstripe-elemental-userforms": "^3",
-        "silverstripe/framework": "^4",
-        "silverstripe/userforms": "^5",
-        "unclecheese/display-logic": "^2"
+        "dnadesign/silverstripe-elemental-userforms": "^4",
+        "silverstripe/framework": "^5",
+        "silverstripe/userforms": "^6",
+        "unclecheese/display-logic": "^3"
     },
     "autoload": {
         "psr-4": {
