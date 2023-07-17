@@ -1,0 +1,47 @@
+nl:
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCheckboxExtension:
+    DEFAULT_VALUE: 'Gedrag'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCountryDropdownFieldExtension:
+    CHOOSECOUNTRY: 'Kies een land...'
+    EMPTYSTRING_CHECKBOX_DESCRIPTION: 'Toon een tekst als er nog geen land gekozen is...'
+    EMPTYSTRING_CHECKBOX_LABEL: 'Lege waarde'
+    EMPTYSTRING_DESCRIPTION: 'Wordt getoond als er nog geen land is gekozen'
+    EMPTYSTRING_LABEL: 'Tekst bij lege waarde'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableDateFieldExtension:
+    DEFAULTTOTODAY: 'Standaard op vandaag'
+    PREPOPULATE: 'Veld standaard instellen op huidige datum'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableFormFieldExtension:
+    ADVANCED: 'Overige instellingen'
+    CUSTOMERROR_DESCRIPTION: 'Dit bericht wordt getoond als het veld niet (correct) wordt ingevuld'
+    CUSTOMERROR_LABEL: 'Aangepaste foutmelding'
+    DEFAULTVALUE_DESCRIPTION: 'Waarde om het veld standaard mee te vullen'
+    DESCRIPTION_DESCRIPTION: 'Tips hoe de gebruiker dit veld in kan vullen'
+    DESCRIPTION_LABEL: 'Toelichting'
+    PLACEHOLDER_DESCRIPTION: 'Toont de gebruiker een voorbeeld waarde'
+    REQUIRED_DESCRIPTION: 'Maak dit een verplicht veld'
+    REQUIRED_LABEL: 'Verplicht veld'
+    SHOW_IN_SUMMARY: 'Toon dit veld in het overzicht van inzendingen'
+    SUMMARY_FIELD: 'Overzicht'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableLiteralFieldExtension:
+    HIDEFROMREPORTS_DESCRIPTION: 'Dit veld niet tonen e-mails en detailweergave van inzending'
+    HIDEFROMREPORTS_LABEL: 'Verberg in overzichten?'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableMultipleOptionFieldExtension:
+    ADD_OPTION: 'Optie toevoegen'
+    EMPTYSTRING_CHECKBOX_DESCRIPTION: 'Toon een tekst als er nog geen keuze gemaakt is...'
+    EMPTYSTRING_CHECKBOX_LABEL: 'Lege waarde'
+    EMPTYSTRING_DESCRIPTION: 'Wordt getoond als er nog geen keuze gemaakt is'
+    EMPTYSTRING_LABEL: 'Tekst bij lege waarde'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormCMSFieldsExtension:
+    CONFIGURATION_SAVESUBMISSIONS: 'Formulier inzendingen opslaan in CMS'
+    CONFIGURATION_SAVESUBMISSIONS_NO: 'Nee'
+    CONFIGURATION_SAVESUBMISSIONS_YES: 'Ja'
+    CONFIGURATION_SHOWONCOMPLETE: 'Melding na succesvolle inzending'
+    CONFIGURATION_SUBMITLABEL: 'Tekst op verzend-knop'
+    CONFIGURATION_SUBMITPLACEHOLDER: 'Verstuur'
+    FIELDOVERVIEW_ADDFIELD: 'Nieuw veld toevoegen'
+    FIELDOVERVIEW_ADDGROUPFIELD: 'Veldgroep toevoegen'
+    FIELDOVERVIEW_ADDPAGEBREAK: 'Nieuwe pagina toevoegen'
+    FIELDOVERVIEW_FIELDTYPE: 'Soort veld'
+    FIELDOVERVIEW_REQUIRED: 'Verplicht?'
+    FIELDOVERVIEW_SHOWINSUMMARY: 'Toon in overzicht?'
+    FIELDOVERVIEW_TITLE: 'Titel'

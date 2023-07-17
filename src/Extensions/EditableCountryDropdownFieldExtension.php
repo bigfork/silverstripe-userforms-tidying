@@ -15,7 +15,7 @@ class EditableCountryDropdownFieldExtension extends Extension
     {
         /** @var DropdownField $default */
         $default = $fields->dataFieldByName('Default');
-        $default->setEmptyString('Select a country...');
+        $default->setEmptyString(_t(__CLASS__.'.CHOOSECOUNTRY', 'Select a country...'));
 
         $fields->removeByName(['UseEmptyString', 'EmptyString']);
         $fields->addFieldsToTab(
@@ -23,10 +23,18 @@ class EditableCountryDropdownFieldExtension extends Extension
             [
                 FieldGroup::create(
                     'Empty value',
-                    CheckboxField::create('UseEmptyString', 'Display custom text when no country has been selected')
-                ),
-                $emptyString = TextField::create('EmptyString', 'Empty value text')
-                    ->setDescription('Shown when no country has been selected')
+                    CheckboxField::create(
+                        'UseEmptyString',
+                        _t(
+                            __CLASS__.'.EMPTYSTRING_CHECKBOX_DESCRIPTION',
+                            'Display custom text when no country has been selected'
+                        )
+                    )
+                )->setTitle(_t(__CLASS__.'.EMPTYSTRING_CHECKBOX_LABEL', 'Empty value')),
+                $emptyString = TextField::create('EmptyString', _t(__CLASS__.'.EMPTYSTRING_LABEL', 'Empty value text'))
+                    ->setDescription(
+                        _t(__CLASS__.'.EMPTYSTRING_DESCRIPTION', 'Shown when no country has been selected')
+                    )
             ],
             'Advanced'
         );

@@ -1,0 +1,49 @@
+en:
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCheckboxExtension:
+    DEFAULT_VALUE: 'Default value'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableCountryDropdownFieldExtension:
+    CHOOSECOUNTRY: 'Select a country...'
+    EMPTYSTRING_CHECKBOX_DESCRIPTION: 'Display custom text when no country has been selected'
+    EMPTYSTRING_CHECKBOX_LABEL: 'Empty value'
+    EMPTYSTRING_DESCRIPTION: 'Shown when no country has been selected'
+    EMPTYSTRING_LABEL: 'Empty value text'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableDateFieldExtension:
+    DEFAULTTOTODAY: 'Default to today'
+    PREPOPULATE: 'Pre-populate the field with today’s date'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableFormFieldExtension:
+    ADVANCED: 'Advanced'
+    CUSTOMERROR_DESCRIPTION: 'The error message shown when the user doesn’t complete this field'
+    CUSTOMERROR_LABEL: 'Custom error message'
+    DEFAULTVALUE_DESCRIPTION: 'Value to pre-populate the field with'
+    DESCRIPTION_DESCRIPTION: 'Text to help guide the user on how to fill out the field'
+    DESCRIPTION_LABEL: 'Description'
+    PLACEHOLDER_DESCRIPTION: 'Shows the user an example value'
+    REQUIRED_DESCRIPTION: 'Make this a required field'
+    REQUIRED_LABEL: 'Required field'
+    SHOW_IN_SUMMARY: 'Show this field in the “summary” column for submissions'
+    SUMMARY_FIELD: 'Summary field'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableLiteralFieldExtension:
+    HIDEFROMREPORTS_DESCRIPTION: 'Stop this field showing in stored submissions'
+    HIDEFROMREPORTS_LABEL: 'Hide from reports?'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\EditableMultipleOptionFieldExtension:
+    ADD_OPTION: 'Add new option'
+    EMPTYSTRING_CHECKBOX_DESCRIPTION: 'Display custom text when no value has been selected'
+    EMPTYSTRING_CHECKBOX_LABEL: 'Empty value'
+    EMPTYSTRING_DESCRIPTION: 'Shown when no value has been selected'
+    EMPTYSTRING_LABEL: 'Empty value text'
+  Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormCMSFieldsExtension:
+    CONFIGURATION_SAVESUBMISSIONS: 'Save submissions to CMS?'
+    CONFIGURATION_SAVESUBMISSIONS_NO: 'No'
+    CONFIGURATION_SAVESUBMISSIONS_YES: 'Yes'
+    CONFIGURATION_SHOWONCOMPLETE: 'Show on completion'
+    CONFIGURATION_SUBMITLABEL: 'Submit button text'
+    CONFIGURATION_SUBMITPLACEHOLDER: 'Submit'
+    FIELDOVERVIEW_ADDFIELD: 'Add form field'
+    FIELDOVERVIEW_ADDGROUPFIELD: 'Add field group'
+    FIELDOVERVIEW_ADDPAGEBREAK: 'Add page break'
+    FIELDOVERVIEW_FIELDTYPE: 'Field type'
+    FIELDOVERVIEW_REQUIRED: 'Required'
+    FIELDOVERVIEW_SHOWINSUMMARY: 'Show in summary?'
+    FIELDOVERVIEW_TITLE: 'Title'
+  SilverStripe\UserForms\Model\EditableFormField:
+    CHECKEDBYDEFAULT: 'This checkbox should be checked by default'
