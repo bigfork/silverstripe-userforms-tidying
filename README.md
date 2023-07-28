@@ -10,7 +10,7 @@ composer install bigfork/silverstripe-userforms-tidying
 
 Changes include, but aren’t limited to:
 
-- Forces userforms via an elemental block - `UserDefinedForm` pages can't be created in the CMS
+- Optionally forces userforms via an elemental block - so `UserDefinedForm` pages can't be created in the CMS
 - Removes a few fields that confuse content authors
 - Moves/replaces/amends other fields to make them more user-friendly
 - Makes the Add Field/Add Page/Add Field Group functionality work with add-new-inline to prevent triggering a reload
@@ -27,6 +27,17 @@ If possible, you should disable the UserForms CSS and bundle your own styles in 
 decent amount of testing for things like multiple pages (if they’re enabled) to ensure no styles are missing, so use
 your own judgement on whether it's worth it. If multiple page forms are _not_ enabled, you should definitely block the
 default CSS.
+
+### Force userforms to be created via blocks (recommended)
+
+If blocks are enabled, there’s not really much point having the ability to create userform pages - they have the same
+functionality as a page with a userform block, just less flexibility.
+
+```yml
+SilverStripe\UserForms\Model\UserDefinedForm:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\UserDefinedFormExtension
+```
 
 ### Disable multi-page forms (recommended)
 
