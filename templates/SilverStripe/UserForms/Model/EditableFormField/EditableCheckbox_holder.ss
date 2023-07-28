@@ -1,4 +1,4 @@
-<div class="form__field-group<% if $extraClass %> {$extraClass}<% end_if %>" id="{$HolderID}">
+<div class="form__field-group<% if $extraClass %> {$extraClass}<% end_if %>" id="{$Name}">
 	<div class="form__field-holder<% if not $Title %> form__field-holder--no-label<% end_if %>">
 		<div class="form__field form-check">
 			{$Field}
