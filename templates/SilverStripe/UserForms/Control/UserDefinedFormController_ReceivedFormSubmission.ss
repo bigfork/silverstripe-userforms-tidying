@@ -5,7 +5,6 @@
 <script type="text/javascript">
 	window.dataLayer = window.dataLayer || [];
 	window.dataLayer.push({
-		'event': 'FormComplete',
-		'Form' : '<% if $Title %>{$Title}<% else %>{$Parent.OwnerPage.MenuTitle}<% end_if %>'
+        'event': 'form_<% if $Title %>{$Title.SnakeCase}<% else %>userform<% end_if %>'
 	});
 </script>

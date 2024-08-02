@@ -11,6 +11,9 @@ DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
     - Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormCMSFieldsExtension
     - Bigfork\SilverstripeUserFormsTidying\Extensions\ElementFormExtension
+SilverStripe\ORM\FieldType\DBString:
+  extensions:
+    - Bigfork\SilverstripeUserFormsTidying\Extensions\DBStringExtension
 SilverStripe\UserForms\Form\UserForm:
   extensions:
     - Bigfork\SilverstripeUserFormsTidying\Extensions\UserFormExtension
