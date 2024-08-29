@@ -3,7 +3,7 @@
 		<% if $Title %>
 			<div id="{$ID}_GroupLabel" class="form__field-label">{$Title}<% if $Required %><em>*</em><% end_if %></div>
 		<% end_if %>
-		<div class="form__field" role="radiogroup" aria-labelledby="{$ID}_GroupLabel">
+		<div class="form__field" role="<% if $Type = 'optionset checkboxset' %>group<% else %>radiogroup<% end_if %>" aria-labelledby="{$ID}_GroupLabel">
 			{$Field}
 		</div>
 		<% if $Description %><p class="form__field-description">{$Description}</p><% end_if %>
