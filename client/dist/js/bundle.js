@@ -41,5 +41,18 @@
                 return false;
             }
         });
+
+        $('.grid-field .action.grid-field__clear-submissions').entwine({
+            onclick: function (e) {
+                const confirmMessage = 'Are you sure you want to delete all form submissions? This cannot be undone';
+
+                if (!confirm(confirmMessage)) {
+                    e.preventDefault();
+                    return false;
+                } else {
+                    this._super(e);
+                }
+            }
+        });
     });
 })(jQuery);

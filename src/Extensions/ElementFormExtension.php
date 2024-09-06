@@ -2,6 +2,7 @@
 
 namespace Bigfork\SilverstripeUserFormsTidying\Extensions;
 
+use Bigfork\SilverstripeUserFormsTidying\Forms\GridFieldClearSubmissionsButton;
 use DNADesign\Elemental\Forms\TextCheckboxGroupField;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
@@ -34,6 +35,10 @@ class ElementFormExtension extends Extension
             // Remove "Content" tab now that it's empty
             $fields->removeByName('Main');
         }
+
+        /** @var GridField $submissions */
+        $submissions = $fields->dataFieldByName('Submissions');
+        $submissions->getConfig()->addComponent(new GridFieldClearSubmissionsButton('buttons-after-right'));
     }
 
     /**
