@@ -41,7 +41,7 @@ class UserFormCMSFieldsExtension extends Extension
         $this->removeUserUnfriendlyFields($fields);
         $this->reorderTabs($fields);
         $this->mergeRecipientsTabIntoConfiguration($fields);
-        $this->updateSubmissionsGridField($fields);
+        $this->updateSubmissionsFormField($fields);
     }
 
     protected function tidyFieldEditorGridField(FieldList $fields): void
@@ -196,7 +196,7 @@ class UserFormCMSFieldsExtension extends Extension
         $fields->removeByName('Recipients');
     }
 
-    protected function updateSubmissionsGridField(FieldList $fields): void
+    protected function updateSubmissionsFormField(FieldList $fields): void
     {
         /** @var GridField $submissions */
         $submissions = $fields->dataFieldByName('Submissions');
