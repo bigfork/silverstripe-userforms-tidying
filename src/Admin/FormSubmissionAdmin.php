@@ -21,6 +21,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 
 class FormSubmissionsAdmin extends LeftAndMain
@@ -68,7 +69,7 @@ class FormSubmissionsAdmin extends LeftAndMain
                                 GridFieldDeleteAction::class,
                                 GridFieldArchiveAction::class,
                             ])
-                    )
+                    )->setModelClass(SubmittedForm::class)
                 )
             )
         );
