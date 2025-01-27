@@ -95,7 +95,7 @@ class FormSubmissionsAdmin extends LeftAndMain
                 if (!$page instanceof SiteTree) {
                     return 'Unknown page';
                 }
-                return $page->Breadcrumbs(20, true);
+                return $page->Breadcrumbs(20, true, false, true);
             },
             'NumberOfSubmissions' => function ($field, ElementForm $record) {
                 return $record->Submissions()->count();
