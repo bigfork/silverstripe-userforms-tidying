@@ -17,6 +17,7 @@ use SilverStripe\Forms\GridField\GridFieldFilterHeader;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\ORM\Filters\GreaterThanOrEqualFilter;
 use SilverStripe\ORM\Filters\LessThanOrEqualFilter;
@@ -42,6 +43,7 @@ class UserFormCMSFieldsExtension extends Extension
         $this->reorderTabs($fields);
         $this->mergeRecipientsTabIntoConfiguration($fields);
         $this->updateSubmissionsFormField($fields);
+        $this->addEmailRecipientsWarning($fields);
     }
 
     protected function tidyFieldEditorGridField(FieldList $fields): void
@@ -240,5 +242,26 @@ class UserFormCMSFieldsExtension extends Extension
         // https://github.com/silverstripe/silverstripe-framework/issues/8454
         $config->removeComponentsByType(GridFieldPaginator::class);
         $config->addComponent(new GridFieldPaginator());
+    }
+
+    protected function addEmailRecipientsWarning(FieldList $fields): void
+    {
+        if ($this->owner->EmailRecipients()->count()) {
+            return;
+        }
+
+        $fields->addFieldsToTab(
+            'Root.FormFields',
+            [
+                LiteralField::create('RecipientsWarning', <<<HTML
+<div class="alert alert-warning">
+This form doesn’t currently have any email recipients. You can add email recipients in the “Configuration” tab.
+</div>
+HTML
+                )
+            ],
+            'Fields',
+        );
+
     }
 }

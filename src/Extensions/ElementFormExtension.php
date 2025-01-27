@@ -6,6 +6,7 @@ use Bigfork\SilverstripeUserFormsTidying\Forms\GridFieldClearSubmissionsButton;
 use DNADesign\Elemental\Forms\TextCheckboxGroupField;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 
 class ElementFormExtension extends Extension
@@ -47,5 +48,12 @@ class ElementFormExtension extends Extension
     public function onBeforeDuplicate()
     {
         $this->owner->write();
+    }
+
+    public function updateBlockSchema(array &$schema)
+    {
+        if (!$this->owner->EmailRecipients()->count()) {
+            $schema['content'] = '⚠️ form has no email recipients';
+        }
     }
 }
