@@ -42,7 +42,7 @@ class FormSubmissionsAdmin extends LeftAndMain
             ->sort('Title ASC')
             ->filterByCallback(function (ElementForm $element) {
                 // Only include archived elements if they have at least one submission
-                return !$element->isArchived() || $element->Submissions()->count() > 0;
+                return !$element->isArchived() && $element->Submissions()->count() > 0;
             })
             ->filterByCallback(function (ElementForm $element) {
                 return $element->canEdit();
