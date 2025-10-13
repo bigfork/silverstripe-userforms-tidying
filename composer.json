@@ -14,10 +14,10 @@
         }
     ],
     "require": {
-        "dnadesign/silverstripe-elemental-userforms": "^4",
-        "silverstripe/framework": "^5",
-        "silverstripe/userforms": "^6",
-        "unclecheese/display-logic": "^3"
+        "dnadesign/silverstripe-elemental-userforms": "^5",
+        "silverstripe/framework": "^6",
+        "silverstripe/userforms": "^7",
+        "unclecheese/display-logic": "^4"
     },
     "autoload": {
         "psr-4": {

@@ -8,7 +8,8 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\HiddenField;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\ArrayData;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataObjectInterface;
 use SilverStripe\ORM\FieldType\DBField;
@@ -16,7 +17,6 @@ use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\ManyManyThroughList;
 use SilverStripe\UserForms\Model\EditableFormField\EditableFieldGroup;
 use SilverStripe\UserForms\Model\EditableFormField\EditableFieldGroupEnd;
-use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
@@ -35,10 +35,13 @@ class GridFieldAddNewFieldGroupInlineButton extends GridFieldAddNewInlineButton
 {
     const POST_KEY = 'GridFieldAddNewFieldGroupInlineButton';
 
-    public function getHTMLFragments($grid)
+    /**
+     * @throws Exception
+     */
+    public function getHTMLFragments($grid): array
     {
         if ($grid->getList() && !singleton($grid->getModelClass())->canCreate()) {
-            return array();
+            return [];
         }
 
         $fragment = $this->getFragment();
@@ -52,9 +55,9 @@ class GridFieldAddNewFieldGroupInlineButton extends GridFieldAddNewInlineButton
         Requirements::javascript('symbiote/silverstripe-gridfieldextensions:javascript/tmpl.js');
         GridFieldExtensions::include_requirements();
 
-        $data = ArrayData::create(array(
+        $data = ArrayData::create([
             'Title'  => $this->getTitle(),
-        ));
+        ]);
 
         return array(
             $fragment => $data->renderWith(__CLASS__),
@@ -73,7 +76,7 @@ class GridFieldAddNewFieldGroupInlineButton extends GridFieldAddNewInlineButton
             $fields = $editable->getFields($grid, $record);
 
             foreach ($grid->getColumns() as $column) {
-                $field = in_array($column, $handled ?? []) ? $fields->dataFieldByName($column) : null;
+                $field = in_array($column, $handled) ? $fields->dataFieldByName($column) : null;
 
                 // EditableFieldGroupEnd returns nothing for this -
                 if ($column === 'Title' && !$field) {
@@ -105,7 +108,7 @@ class GridFieldAddNewFieldGroupInlineButton extends GridFieldAddNewInlineButton
                 }
 
                 // Cast content
-                if (! $content instanceof DBField) {
+                if (!$content instanceof DBField) {
                     $content = DBField::create_field('HTMLFragment', $content);
                 }
 

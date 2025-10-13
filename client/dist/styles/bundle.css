@@ -18,3 +18,7 @@
 .uf-field-editor .col-ShowInSummary {
     max-width: 12ch;
 }
+
+.ss-gridfield-editable select.dropdown {
+    appearance: auto;
+}

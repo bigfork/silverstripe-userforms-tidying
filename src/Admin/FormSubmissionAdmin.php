@@ -20,7 +20,7 @@ use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 
@@ -40,13 +40,8 @@ class FormSubmissionsAdmin extends LeftAndMain
     {
         return ElementForm::get()->setDataQueryParam('Versioned.mode', 'latest_versions')
             ->sort('Title ASC')
-            ->filterByCallback(function (ElementForm $element) {
-                // Only include archived elements if they have at least one submission
-                return !$element->isArchived() && $element->Submissions()->count() > 0;
-            })
-            ->filterByCallback(function (ElementForm $element) {
-                return $element->canEdit();
-            });
+            ->filterByCallback(fn(ElementForm $element) => !$element->isArchived() && $element->Submissions()->count() > 0)
+            ->filterByCallback(fn(ElementForm $element) => $element->canEdit());
     }
 
     public function getEditForm($id = null, $fields = null): ?Form

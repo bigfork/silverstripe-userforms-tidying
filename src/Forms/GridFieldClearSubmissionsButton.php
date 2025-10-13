@@ -2,9 +2,8 @@
 
 namespace Bigfork\SilverstripeUserFormsTidying\Forms;
 
-use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\GridField\AbstractGridFieldComponent;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
@@ -12,8 +11,6 @@ use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
-use SilverStripe\ORM\ValidationResult;
-use SilverStripe\View\Requirements;
 
 class GridFieldClearSubmissionsButton extends AbstractGridFieldComponent implements GridField_HTMLProvider, GridField_ActionProvider, GridField_URLHandler
 {
