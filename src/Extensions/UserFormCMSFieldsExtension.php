@@ -190,7 +190,7 @@ class UserFormCMSFieldsExtension extends Extension
         $recipients = $fields->fieldByName('Root.Recipients');
 
         // Move "Recipients" tab fields to configuration tab
-        foreach ($recipients->getChildren() as $child) {
+        foreach ($recipients?->getChildren() ?? [] as $child) {
             $configuration->push($child);
         }
 
