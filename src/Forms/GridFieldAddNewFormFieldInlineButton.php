@@ -128,7 +128,7 @@ class GridFieldAddNewFormFieldInlineButton extends GridFieldAddNewInlineButton
     public function handleSave(GridField $grid, DataObjectInterface $record)
     {
         $list  = $grid->getList();
-        $value = $grid->Value();
+        $value = $grid->getValue();
 
         if (!isset($value[self::POST_KEY]) || !is_array($value[self::POST_KEY])) {
             return;
