@@ -8,6 +8,7 @@ use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\Tab;
+use SilverStripe\SpamProtection\EditableSpamProtectionField;
 
 class ElementFormExtension extends Extension
 {
@@ -54,6 +55,12 @@ class ElementFormExtension extends Extension
     {
         if (!$this->owner->EmailRecipients()->count()) {
             $schema['content'] = '⚠️ form has no email recipients';
+        }
+        if (
+            class_exists(EditableSpamProtectionField::class) &&
+            !$this->owner->Fields()->filter(['ClassName' => EditableSpamProtectionField::class])->count()
+        ) {
+            $schema['content'] = '⚠️ form has no spam protection';
         }
     }
 }
