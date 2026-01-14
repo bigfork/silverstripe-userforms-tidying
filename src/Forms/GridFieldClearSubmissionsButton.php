@@ -56,7 +56,7 @@ class GridFieldClearSubmissionsButton extends AbstractGridFieldComponent impleme
         ];
     }
 
-    public function handleClear(GridField $gridField, HTTPRequest $request = null): void
+    public function handleClear(GridField $gridField, ?HTTPRequest $request = null): void
     {
         $config = $gridField->getConfig();
         $paginator = $config->getComponentByType(GridFieldPaginator::class);
